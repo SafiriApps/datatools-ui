@@ -21,3 +21,27 @@ GRAPH_HOPPER_POINT_LIMIT: ${GRAPH_HOPPER_POINT_LIMIT:-30}
 GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID:-}
 DISABLE_AUTH: ${DISABLE_AUTH:-false}
 EOF
+
+node - "$PWD/index.html" <<'EOF'
+const fs = require('fs')
+
+const indexFile = process.argv[2]
+const defaultIcon = 'https://d2tyb7byn1fef9.cloudfront.net/ibi-logo-original%402x.png'
+const title = process.env.APPLICATION_TITLE || 'Data Tools'
+const shortcutIconUrl = process.env.SHORTCUT_ICON_URL || defaultIcon
+
+const escapeHtml = (value) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+
+let html = fs.readFileSync(indexFile, 'utf8')
+html = html.replace(/<title>.*?<\/title>/, `<title>${escapeHtml(title)}</title>`)
+html = html.replace(
+  /<link rel="shortcut icon" href="[^"]*" type="image\/x-icon">/,
+  `<link rel="shortcut icon" href="${escapeHtml(shortcutIconUrl)}" type="image/x-icon">`
+)
+fs.writeFileSync(indexFile, html)
+EOF
