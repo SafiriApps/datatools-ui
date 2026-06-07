@@ -12,7 +12,7 @@ BUGSNAG_KEY: ${BUGSNAG_KEY:-}
 MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN:-}
 MAPBOX_MAP_ID: ${MAPBOX_MAP_ID:-mapbox/outdoors-v11}
 MAPBOX_ATTRIBUTION: ${MAPBOX_ATTRIBUTION:-<a href="https://www.mapbox.com/about/maps/" target="_blank">&copy; Mapbox &copy; OpenStreetMap</a> <a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a>}
-MAP_BASE_URL: ${MAP_BASE_URL:-https://tile.openstreetmap.org/{z}/{x}/{y}.png}
+MAP_BASE_URL: ${MAP_BASE_URL:-}
 SLACK_CHANNEL: ${SLACK_CHANNEL:-}
 SLACK_WEBHOOK: ${SLACK_WEBHOOK:-}
 GRAPH_HOPPER_KEY: ${GRAPH_HOPPER_KEY:-}
