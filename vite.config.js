@@ -121,8 +121,7 @@ export default defineConfig({
     allowedHosts: true,
     port: 9966,
     proxy: {
-      // Only applies to e2e tests running in docker. Change this to make vite preview work locally.
-      '/api': 'http://datatools-server:4000'
+      '/api': process.env.SERVER_URL || 'http://datatools-server:4000'
     },
     strictPort: true
   },
